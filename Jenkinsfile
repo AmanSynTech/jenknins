@@ -11,14 +11,14 @@ pipeline {
             }
         }
         stage('Run Install Packages') {
-        steps {
-            echo "Installing required packages..."
-            sh '''
-                cd /home/aman/inventory-testing-clone/DockerBuild/2_InstallPackages
-                make
-            '''
+            steps {
+                echo "Installing required packages..."
+                sh '''
+                    cd /home/aman/inventory-testing-clone/DockerBuild/2_InstallPackages
+                    make
+                '''
+            }
         }
-    }
     }
 }
 
