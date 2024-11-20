@@ -1,11 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Building...') {
+        stage('Run Base Ubuntu') {
             steps {
-		    echo"Building project"
+                echo "Creating ubuntu as base..."
+                sh '''
+                    cd /home/aman/inventory-testing-clone/DockerBuild/1_BaseUbuntu
+                    make
+                '''
             }
         }
-	}
+    }
+    
 }
 
