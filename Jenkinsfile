@@ -10,8 +10,7 @@ pipeline {
                 '''
             }
         }
-    }
-    stage('Run Install Packages') {
+        stage('Run Install Packages') {
         steps {
             echo "Installing required packages..."
             sh '''
@@ -19,6 +18,7 @@ pipeline {
                 make
             '''
         }
+    }
     }
 }
 
