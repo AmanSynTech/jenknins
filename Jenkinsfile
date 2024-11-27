@@ -64,6 +64,15 @@ pipeline {
                 '''
             }
         }
+        stage('Running Test Scripts for Automation') {
+            steps {
+                echo "*** Building all the automation test scripts and installing app for headless testing ***"
+                sh '''
+                    cd /home/aman/inventory-testing-clone/DockerBuild/7_RunScript
+                    make
+                '''
+            }
+        }
     }
 }
 
