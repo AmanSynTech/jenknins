@@ -68,7 +68,7 @@ pipeline {
             steps {
                 echo "*** Running all the automation test scripts for headless testing ***"
                 sh '''
-                    docker run --device /dev/kvm -t pivotech-appiumrun:v1.0
+	                docker run --device /dev/kvm -t -e file=TestNG pivotech-appiumrun:v1.0            
                 '''
             }
         }
