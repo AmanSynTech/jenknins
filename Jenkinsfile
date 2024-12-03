@@ -1,11 +1,14 @@
 pipeline {
     agent any
+    environment {
+        BASE_DIR = '/home/aman/inventory-testing-clone/DockerBuild'
+    }
     stages {
         stage('Running Base Ubuntu') {
             steps {
                 echo "Creating ubuntu as base..."
                 sh '''
-                    cd /home/aman/inventory-testing-clone/DockerBuild/1_BaseUbuntu
+                    cd ${BASE_DIR}/1_BaseUbuntu
                     make
                 '''
             }
@@ -14,7 +17,7 @@ pipeline {
             steps {
                 echo "*** Installing all the required packages ***"
                 sh '''
-                    cd /home/aman/inventory-testing-clone/DockerBuild/2_InstallPackages
+                    cd ${BASE_DIR}/2_InstallPackages
                     make
                 '''
             }
@@ -23,7 +26,7 @@ pipeline {
             steps {
                 echo "*** Installing SDK ***"
                 sh '''
-                    cd /home/aman/inventory-testing-clone/DockerBuild/3_InstallSDK
+                    cd ${BASE_DIR}/3_InstallSDK
                     make
                 '''
             }
@@ -32,7 +35,7 @@ pipeline {
             steps {
                 echo "*** Creating required Emulator ***"
                 sh '''
-                    cd /home/aman/inventory-testing-clone/DockerBuild/4_CreateEmulator
+                    cd ${BASE_DIR}/4_CreateEmulator
                     make
                 '''
             }
@@ -41,7 +44,7 @@ pipeline {
             steps {
                 echo "*** Installing required Netbeans App ***"
                 sh '''
-                    cd /home/aman/inventory-testing-clone/DockerBuild/5_InstallNetbeans
+                    cd ${BASE_DIR}/5_InstallNetbeans
                     make
                 '''
             }
@@ -50,7 +53,7 @@ pipeline {
             steps {
                 echo "*** Installing required Inventory Server ***"
                 sh '''
-                    cd /home/aman/inventory-testing-clone/DockerBuild/6_InstallInvServer
+                    cd ${BASE_DIR}/6_InstallInvServer
                     make
                 '''
             }
@@ -59,7 +62,7 @@ pipeline {
             steps {
                 echo "*** Building all the automation test scripts and installing app for headless testing ***"
                 sh '''
-                    cd /home/aman/inventory-testing-clone/DockerBuild/7_RunScript
+                    cd ${BASE_DIR}/7_RunScript
                     make
                 '''
             }
